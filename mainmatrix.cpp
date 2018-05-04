@@ -1,6 +1,7 @@
 #include "jmatrix.h"
 #include "jmatrix.cpp"
 
+#include <stdlib.h>
 #include <iostream>
 
 using namespace std;
@@ -9,23 +10,26 @@ int main()
 {
     int escolha,tamanholinh,tamanholinh2,tamanhocol2,tamanhocol,linhatrix,colunatrix,linhatrix2,colunatrix2;
     string continua="sim";
-    while(continua=="sim")
+    string repete="s";
+
+    cout<<"\Estabeleça o tamanho limite da 1º Matriz: linha[] :";
+    cin>>tamanholinh;
+    cout<<"\nEstabeleça o tamanho limite  da 1º Matriz: colun[] :";
+    cin>>tamanhocol;
+
+    cout<<"\n\nEstabeleça o tamanho limite  da 2º Matriz: linha[] :";
+    cin>>tamanholinh2;
+    cout<<"\nEstabeleça o tamanho limite  da 2º Matriz: colun[] : ";
+    cin>>tamanhocol2;
+
+    jmatrix p(tamanholinh,tamanhocol),p2(tamanholinh2,tamanhocol2);
+
+    while(repete=="s")
     {
-
-        cout<<"\nDigite o tamanho maximo da 1º Matriz: linha[] ";
-        cin>>tamanholinh;
-        cout<<"\nDigite o tamanho maximo da 1º Matriz: colun[] :";
-        cin>>tamanhocol;
-
-        cout<<"\n\nDigite o tamanho maximo da 2º Matriz: linha[] ";
-        cin>>tamanholinh2;
-        cout<<"\nDigite o tamanho maximo da 2º Matriz: colun[] :";
-        cin>>tamanhocol2;
-
-        jmatrix p(tamanholinh,tamanhocol),p2(tamanholinh2,tamanhocol2),aux(tamanholinh+tamanhocol2,tamanhocol+tamanhocol2);
-
-
-        cout<<"\n\n";
+        jmatrix aux(tamanholinh+tamanhocol2,tamanhocol+tamanhocol2);
+        system("cls");
+        cout<<" \n 1ºLimite linha = " <<tamanholinh<<"\n 1ºLimite coluna = "<<tamanhocol<<"\n 2ºLimite linha = "<<tamanholinh2;
+        cout<<" \n 2ºLimite coluna = "<<tamanhocol2 << "\n\n";
         cout<<"\n Digite o tamanho da linha da 1ºMatriz :";
         cin>>linhatrix;
         cout<<"\n Digite o tamanho da coluna da 1ºMatriz :";
@@ -49,7 +53,6 @@ int main()
         }
         p2.lemat();
 
-
         cout<<"\n\t\t Menu  \n";
         cout<< "\n Digite a operação que você deseja realizar\n";
         //cout<< " 1.	Leia uma matriz com tamanho definido pelo usuário : " ;
@@ -72,10 +75,102 @@ int main()
         cout<< "\n Sua escolha é : ";
         cin >> escolha;
 
+        switch(escolha)
+        {
+            case 5:
+            {
+                cout<<"\n";
+                aux.soma(p,p2);
+                aux.imprimemat();
+                cout<<"\n";
+                break;
+            }
+            case 6:
+            {
+                cout<<"\n";
+                aux.sub(p,p2);
+                aux.imprimemat();
+                cout<<"\n";
+                break;
+            }
+            case 7:
+            {
+                cout<<"\n";
+                aux.multip(p,p2);
+                aux.imprimemat();
+                cout<<"\n";
+                break;
+            }
+            case 8:
+            {
+                int digito1;
+                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cin>>digito1;
+                if(digito1==1)
+                {
+                    if(p.triangsup())
+                    {
+                        cout<< "\n É triangular superior !!!";
+                    }
+                    else
+                    {
+                        cout<< "\n Não é triangular superior !!!";
+                    }
+                }
+                if(digito1==2)
+                {
+                    if(p2.trianginf())
+                    {
+                        cout<< "\n É triangular superior !!!";
+                    }
+                    else
+                    {
+                        cout<< "\n Não é triangular superior !!!";
+                    }
+                }
+                break;
+            }
+            case 9:
+            {
+                int digito;
+                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cin>>digito;
+                if(digito==1)
+                {
+                    if(p.trianginf())
+                    {
+                        cout<< "\n É triangular inferior !!!";
+                    }
+                    else
+                    {
+                        cout<< "\n Não é triangular inferior !!!";
+                    }
+                }
+                if(digito==2)
+                {
+                    if(p2.trianginf())
+                    {
+                        cout<< "\n É triangular inferior !!!";
+                    }
+                    else
+                    {
+                        cout<< "\n Não é triangular inferior !!!";
+                    }
+                }
 
+                break;
+            }
 
+            default:
+            {
+                cout<<"\nSe não digitares o numero certo te mandarei tomar no cuca !!! \n";
+            }
 
+        }
+
+        cout<<"\nDeseja continuar ? s ou n ? ";
+        cin>>repete;
+        system("cls");
     }
-
 
 }

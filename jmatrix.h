@@ -16,7 +16,11 @@ private:
     int getmatij(int i,int j);//finalizado
     void imprimemat();//finalizado
     bool imprimemat(int x,int y);//finalizado
-    void soma(jmatrix j,jmatrix k);
+    void soma(jmatrix j,jmatrix k);//finalizado
+    void sub(jmatrix x,jmatrix y);//finalizado
+    void multip(jmatrix x,jmatrix y);//finalizado
+    bool trianginf();//finalizado
+    bool triangsup();//finalizado
     ~jmatrix();//finalizado
 };
 #endif

@@ -74,12 +74,21 @@ bool jmatrix::imprimemat(int x,int y)
 
 void jmatrix::imprimemat()
 {
-    int i,k;
+    int i,k,t=1;
     for(i=0;i<l;i++)
     {
+
         for(k=0;k<c;k++)
-        {
-            cout<<matrix[i][k];
+        {   if(i==t)
+            {
+                t++;
+                cout<<"\n";
+                cout<<matrix[i][k] << " ";
+            }
+            else
+            {
+            cout<<matrix[i][k] << " ";
+            }
         }
     }
 }
@@ -96,17 +105,99 @@ bool jmatrix::setlc(int x,int y)
 
 }
 
-/*void jmatrix::soma(jmatrix j,jmatrix k)
+void jmatrix::soma(jmatrix x,jmatrix y)
 {
-    for(int i=0;i<j.l;i++)
+    if(x.l==y.l&x.c==y.c)
     {
-        for(int d=0;d<k.l;i++)
+        for(int i=0;i<x.l;i++)
         {
-            matrix[i]=j.matrix[i]+k.matrix[i];
+            for(int k=0;k<x.c;k++)
+            {
+            matrix[i][k]=x.matrix[i][k]+y.matrix[i][k];
+            }
         }
+    l=x.l;
+    c=x.c;
+    }
+    else
+    {
+        cout<<"\nAs matrizes dijitadas não possuem o mesmo número de linhas e de colunas!";
     }
 }
-*/
+
+void jmatrix::sub(jmatrix x,jmatrix y)
+{
+    if(x.l==y.l&x.c==y.c)
+    {
+        for(int i=0;i<x.l;i++)
+        {
+            for(int k=0;k<x.c;k++)
+            {
+            matrix[i][k]=x.matrix[i][k]-y.matrix[i][k];
+            }
+        }
+    l=x.l;
+    c=x.c;
+    }
+    else
+    {
+        cout<<"\nAs matrizes dijitadas não possuem o mesmo número de linhas e de colunas!";
+    }
+}
+
+void jmatrix::multip(jmatrix x,jmatrix y)
+{
+
+    if(x.l==y.c||x.c==y.l)
+    {
+        for(int i=0;i<x.l;i++)
+        {
+            for(int k=0;k<y.c;k++)
+            {
+                for(int f=0;f<x.c;f++)
+                {
+                   matrix[k][i]+=x.matrix[k][f]*y.matrix[f][i];
+                }
+
+            }
+        }
+    l=x.l;
+    c=y.c;
+    }
+    else
+    {
+        cout<<"\nAs matrizes dijitadas não possuem a condição necessária para serem multiplicadas!";
+    }
+}
+bool jmatrix::trianginf()
+{
+    for(int i=0; i<1-l;i++)
+    {
+        for(int k=1+i; k<c;k++)
+        {
+            if(matrix[i][k]!=0)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool jmatrix::triangsup()
+{
+    for(int i=1; i<l;i++)
+    {
+        for(int k=0; k<i;k++)
+        {
+            if(matrix[i][k]!=0)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
 jmatrix::~jmatrix()
 {
