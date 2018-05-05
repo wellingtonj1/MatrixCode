@@ -1,6 +1,7 @@
 #include "jmatrix.h"
 #include "jmatrix.cpp"
 
+#include <locale.h>
 #include <stdlib.h>
 #include <iostream>
 
@@ -8,50 +9,67 @@ using namespace std;
 
 int main()
 {
+    setlocale(LC_ALL,"");
     int escolha,tamanholinh,tamanholinh2,tamanhocol2,tamanhocol,linhatrix,colunatrix,linhatrix2,colunatrix2;
     string continua="sim";
     string repete="s";
+    string choose;
 
-    cout<<"\Estabeleça o tamanho limite da 1º Matriz: linha[] :";
+    cout<<"\n Estabeleça o tamanho limite da 1º Matriz: linha[] :";
     cin>>tamanholinh;
-    cout<<"\nEstabeleça o tamanho limite  da 1º Matriz: colun[] :";
+    cout<<"\n Estabeleça o tamanho limite  da 1º Matriz: colun[] :";
     cin>>tamanhocol;
 
-    cout<<"\n\nEstabeleça o tamanho limite  da 2º Matriz: linha[] :";
+    cout<<"\n\n Estabeleça o tamanho limite  da 2º Matriz: linha[] :";
     cin>>tamanholinh2;
-    cout<<"\nEstabeleça o tamanho limite  da 2º Matriz: colun[] : ";
+    cout<<"\n Estabeleça o tamanho limite  da 2º Matriz: colun[] : ";
     cin>>tamanhocol2;
 
-    jmatrix p(tamanholinh,tamanhocol),p2(tamanholinh2,tamanhocol2);
+    jmatrix p(tamanholinh,tamanhocol),p2(tamanholinh2,tamanhocol2),aux(tamanholinh+tamanhocol2,tamanhocol+tamanhocol2);
 
     while(repete=="s")
     {
-        jmatrix aux(tamanholinh+tamanhocol2,tamanhocol+tamanhocol2);
+
         system("cls");
+
+
         cout<<" \n 1ºLimite linha = " <<tamanholinh<<"\n 1ºLimite coluna = "<<tamanhocol<<"\n 2ºLimite linha = "<<tamanholinh2;
         cout<<" \n 2ºLimite coluna = "<<tamanhocol2 << "\n\n";
+        digito:
         cout<<"\n Digite o tamanho da linha da 1ºMatriz :";
         cin>>linhatrix;
         cout<<"\n Digite o tamanho da coluna da 1ºMatriz :";
         cin>>colunatrix;
         if(!p.setlc(linhatrix,colunatrix))
         {
-            cout<<"\nTamanho invalido..programa abortado!";
+            cout<<"\nTamanho invalido..Digite novamente : ";
+            goto digito;
             break;
         }
-
         p.lemat();
 
+        digito2:
         cout<<"\n\n Digite o tamanho da linha da 2ºMatriz :";
         cin>>linhatrix2;
         cout<<"\n Digite o tamanho da coluna da 2ºMatriz :";
         cin>>colunatrix2;
         if(!p2.setlc(linhatrix2,colunatrix2))
         {
-            cout<<"\nTamanho invalido..programa abortado!";
+            cout<<"\nTamanho invalido..Digite novamente : ";
+            goto digito2;
             break;
         }
         p2.lemat();
+
+        salvar:
+        system("cls");
+        system("clear");
+
+
+        cout<< "A Matriz que voce digitou MAT A= \n";
+        p.imprimemat();
+        cout<<"\n MAT B= \n";
+        p2.imprimemat();
 
         cout<<"\n\t\t Menu  \n";
         cout<< "\n Digite a operação que você deseja realizar\n";
@@ -78,31 +96,32 @@ int main()
         switch(escolha)
         {
             case 5:
-            {
                 cout<<"\n";
+
                 aux.soma(p,p2);
                 aux.imprimemat();
+
                 cout<<"\n";
                 break;
-            }
+
             case 6:
-            {
+
                 cout<<"\n";
                 aux.sub(p,p2);
                 aux.imprimemat();
                 cout<<"\n";
                 break;
-            }
+
             case 7:
-            {
+
                 cout<<"\n";
                 aux.multip(p,p2);
                 aux.imprimemat();
                 cout<<"\n";
                 break;
-            }
+
             case 8:
-            {
+
                 int digito1;
                 cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
                 cin>>digito1;
@@ -119,7 +138,7 @@ int main()
                 }
                 if(digito1==2)
                 {
-                    if(p2.trianginf())
+                    if(p2.triangsup())
                     {
                         cout<< "\n É triangular superior !!!";
                     }
@@ -129,9 +148,9 @@ int main()
                     }
                 }
                 break;
-            }
+
             case 9:
-            {
+
                 int digito;
                 cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
                 cin>>digito;
@@ -159,18 +178,59 @@ int main()
                 }
 
                 break;
-            }
+
+
+            case 12:
+
+                int digito2;
+                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cin>>digito2;
+                if(digito2==1)
+                {
+                    if(p.identidade())
+                    {
+                        cout<< "\n É Matriz identidade !!!";
+                    }
+                    else
+                    {
+                        cout<< "\n Não é Matriz identidade !!!";
+                    }
+                }
+                if(digito2==2)
+                {
+                    if(p2.identidade())
+                    {
+                        cout<< "\n É Matriz identidade !!!";
+                    }
+                    else
+                    {
+                        cout<< "\n Não é Matriz identidade !!!";
+                    }
+                }
+
+                break;
+
+
 
             default:
-            {
+
                 cout<<"\nSe não digitares o numero certo te mandarei tomar no cuca !!! \n";
-            }
+
 
         }
+        cout<<"\nDeseja realizar outra operação com os mesmos numeros? sim ou nao ? : ";
+        cin>>choose;
+        if(choose=="sim")
+        {
 
+            goto salvar;
+
+        }
         cout<<"\nDeseja continuar ? s ou n ? ";
         cin>>repete;
         system("cls");
+        system("clear");
     }
+
 
 }

@@ -16,6 +16,7 @@ jmatrix::jmatrix(int nl,int nc)
     qc=nc;
     l=c=0;
 }
+
 bool jmatrix::setmatij(int i,int j,int x)
 {
     if(i>=ql||j>=qc)
@@ -199,8 +200,32 @@ bool jmatrix::triangsup()
     return true;
 }
 
+void jmatrix::simetrica()
+{
+
+}
+
+bool jmatrix::identidade()
+{
+    for(int i=0;i<l;)
+    {
+        for(int j=0;j<c;j++,i++)
+        {
+            if(triangsup()&&trianginf()&&matrix[i][j]==1)
+            {
+                return true;
+            }
+
+        }
+    }
+    return false;
+
+}
+
 jmatrix::~jmatrix()
 {
+
+    cout<<"\n\ndestrutor executado";
     for(int i=0;i<ql;i++)
     {
         delete[]matrix[i];

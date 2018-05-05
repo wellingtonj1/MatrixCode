@@ -21,6 +21,10 @@ private:
     void multip(jmatrix x,jmatrix y);//finalizado
     bool trianginf();//finalizado
     bool triangsup();//finalizado
+    void simetrica();
+    bool identidade();
+
+
     ~jmatrix();//finalizado
 };
 #endif
