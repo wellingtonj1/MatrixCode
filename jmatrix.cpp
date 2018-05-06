@@ -148,18 +148,20 @@ void jmatrix::sub(jmatrix x,jmatrix y)
 
 void jmatrix::multip(jmatrix x,jmatrix y)
 {
-
-    if(x.l==y.c||x.c==y.l)
+    int aux=0;
+    if(x.c==y.l)
     {
         for(int i=0;i<x.l;i++)
         {
             for(int k=0;k<y.c;k++)
             {
+                matrix[i][k]=0;
                 for(int f=0;f<x.c;f++)
                 {
-                   matrix[k][i]+=x.matrix[k][f]*y.matrix[f][i];
+                 aux+=x.matrix[i][f]*y.matrix[f][k];
                 }
-
+                matrix[i][k]=aux;
+                aux=0;
             }
         }
     l=x.l;
@@ -172,17 +174,20 @@ void jmatrix::multip(jmatrix x,jmatrix y)
 }
 bool jmatrix::trianginf()
 {
-    for(int i=0; i<1-l;i++)
+    for(int i=0; i<l-1;i++)
     {
-        for(int k=1+i; k<c;k++)
+        for(int k=1+i;k<c;k++)
         {
             if(matrix[i][k]!=0)
             {
                 return false;
             }
+            else
+            {
+                return true;
+            }
         }
     }
-    return true;
 }
 
 bool jmatrix::triangsup()
@@ -195,13 +200,31 @@ bool jmatrix::triangsup()
             {
                 return false;
             }
+            else
+            {
+                return true;
+            }
         }
     }
-    return true;
+
 }
 
-void jmatrix::simetrica()
+bool jmatrix::simetrica(jmatrix x)
 {
+    transp(x);
+    int i,j;
+    for(i=0;i<l;i++)
+    {
+        for(j=0;j<c && matrix[i][j]==x.matrix[i][j];j++)
+        {
+        }
+    }
+    if(j==c&&i==l)
+    {
+        return true;
+    }
+    else
+        return false;
 
 }
 
@@ -222,7 +245,21 @@ bool jmatrix::identidade()
 
 }
 
-jmatrix::~jmatrix()
+void jmatrix::transp(jmatrix x)
+{
+    for(int i=0;i<x.l;i++)
+    {
+        for(int j=0;j<x.c;j++)
+        {
+            matrix[i][j]=x.matrix[j][i];
+        }
+    }
+    l=x.l;
+    c=x.c;
+
+}
+
+void jmatrix::jmatrixdest()
 {
 
     cout<<"\n\ndestrutor executado";

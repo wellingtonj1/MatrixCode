@@ -179,8 +179,39 @@ int main()
 
                 break;
 
+            case 10:
+
+                int digito4;
+                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cin>>digito4;
+                cout<<"\n";
+                if(digito4==1)
+                {
+                     if(aux.simetrica(p))
+                     {
+                         cout<<"\n É simetrica";
+                     }
+                     else
+                        cout<<"\n Não é simetrica";
+                }
+                if(digito4==2)
+                {
+                   if(aux.simetrica(p2))
+                    {
+                         cout<<"\n É simetrica";
+                    }
+                    else
+                        cout<<"\n Não é simetrica";
+                }
+                cout<<"\n";
+                break;
+
+            case 11:
+
+            break;
 
             case 12:
+
 
                 int digito2;
                 cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
@@ -210,7 +241,24 @@ int main()
 
                 break;
 
+            case 13:
 
+                int digito3;
+                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cin>>digito3;
+                cout<<"\n";
+                if(digito3==1)
+                {
+                     aux.transp(p);
+                     aux.imprimemat();
+                }
+                if(digito3==2)
+                {
+                    aux.transp(p2);
+                    aux.imprimemat();
+                }
+                cout<<"\n";
+                break;
 
             default:
 
@@ -232,5 +280,8 @@ int main()
         system("clear");
     }
 
+    aux.jmatrixdest();
+    p.jmatrixdest();
+    p2.jmatrixdest();
 
 }
