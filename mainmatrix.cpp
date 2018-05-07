@@ -15,14 +15,14 @@ int main()
     string repete="s";
     string choose;
 
-    cout<<"\n Estabeleça o tamanho limite da 1º Matriz: linha[] :";
+    cout<<"\n Estabeleï¿½a o tamanho limite da 1ï¿½ Matriz: linha[] :";
     cin>>tamanholinh;
-    cout<<"\n Estabeleça o tamanho limite  da 1º Matriz: colun[] :";
+    cout<<"\n Estabeleï¿½a o tamanho limite  da 1ï¿½ Matriz: colun[] :";
     cin>>tamanhocol;
 
-    cout<<"\n\n Estabeleça o tamanho limite  da 2º Matriz: linha[] :";
+    cout<<"\n\n Estabeleï¿½a o tamanho limite  da 2ï¿½ Matriz: linha[] :";
     cin>>tamanholinh2;
-    cout<<"\n Estabeleça o tamanho limite  da 2º Matriz: colun[] : ";
+    cout<<"\n Estabeleï¿½a o tamanho limite  da 2ï¿½ Matriz: colun[] : ";
     cin>>tamanhocol2;
 
     jmatrix p(tamanholinh,tamanhocol),p2(tamanholinh2,tamanhocol2),aux(tamanholinh+tamanhocol2,tamanhocol+tamanhocol2);
@@ -33,12 +33,12 @@ int main()
         system("cls");
 
 
-        cout<<" \n 1ºLimite linha = " <<tamanholinh<<"\n 1ºLimite coluna = "<<tamanhocol<<"\n 2ºLimite linha = "<<tamanholinh2;
-        cout<<" \n 2ºLimite coluna = "<<tamanhocol2 << "\n\n";
+        cout<<" \n 1ï¿½Limite linha = " <<tamanholinh<<"\n 1ï¿½Limite coluna = "<<tamanhocol<<"\n 2ï¿½Limite linha = "<<tamanholinh2;
+        cout<<" \n 2ï¿½Limite coluna = "<<tamanhocol2 << "\n\n";
         digito:
-        cout<<"\n Digite o tamanho da linha da 1ºMatriz :";
+        cout<<"\n Digite o tamanho da linha da 1ï¿½Matriz :";
         cin>>linhatrix;
-        cout<<"\n Digite o tamanho da coluna da 1ºMatriz :";
+        cout<<"\n Digite o tamanho da coluna da 1ï¿½Matriz :";
         cin>>colunatrix;
         if(!p.setlc(linhatrix,colunatrix))
         {
@@ -49,9 +49,9 @@ int main()
         p.lemat();
 
         digito2:
-        cout<<"\n\n Digite o tamanho da linha da 2ºMatriz :";
+        cout<<"\n\n Digite o tamanho da linha da 2ï¿½Matriz :";
         cin>>linhatrix2;
-        cout<<"\n Digite o tamanho da coluna da 2ºMatriz :";
+        cout<<"\n Digite o tamanho da coluna da 2ï¿½Matriz :";
         cin>>colunatrix2;
         if(!p2.setlc(linhatrix2,colunatrix2))
         {
@@ -72,25 +72,25 @@ int main()
         p2.imprimemat();
 
         cout<<"\n\t\t Menu  \n";
-        cout<< "\n Digite a operação que você deseja realizar\n";
-        //cout<< " 1.	Leia uma matriz com tamanho definido pelo usuário : " ;
+        cout<< "\n Digite a operaï¿½ï¿½o que vocï¿½ deseja realizar\n";
+        //cout<< " 1.	Leia uma matriz com tamanho definido pelo usuï¿½rio : " ;
         //cout<< "\n 2.	Pesista uma matriz em arquivo texto : " ;
         //cout<< "\n 3.	Recupere uma matriz de um arquivo texto : " ;
         //cout<< "\n 4.	Apage o arquivo texto de uma matriz : " ;
         cout<< "\n 5.	Calcule e persista a matriz resultante da soma de duas matrizes : " ;
         cout<< "\n 6.	Calcule e persista a matriz resultante da subtracao de duas matrizes : " ;
         cout<< "\n 7.	Calcule e persista a matriz resultante da multiplicacao de duas matrizes : " ;
-        cout<< "\n 8.	Determine se uma matriz é triangular superior : " ;
-        cout<< "\n 9.	Determine se uma matriz é triangular inferior : " ;
-        cout<< "\n 10.	Determine se uma matriz é simétrica : " ;
-        cout<< "\n 11.	Determine se uma matriz é anti-simétrica : " ;
-        cout<< "\n 12.	Determine se uma matriz é identidade : " ;
+        cout<< "\n 8.	Determine se uma matriz ï¿½ triangular superior : " ;
+        cout<< "\n 9.	Determine se uma matriz ï¿½ triangular inferior : " ;
+        cout<< "\n 10.	Determine se uma matriz ï¿½ simï¿½trica : " ;
+        cout<< "\n 11.	Determine se uma matriz ï¿½ anti-simï¿½trica : " ;
+        cout<< "\n 12.	Determine se uma matriz ï¿½ identidade : " ;
         cout<< "\n 13.	Calcule e persista a matriz transposta : " ;
-        cout<< "\n 14.	Calcule a potenciação de uma matriz e persista a matriz resultante : " ;
-        cout<< "\n 15.	Calcule e persista a matriz resultante da multiplicaçao de uma matriz por k : " ;
-        cout<< "\n 16.	Determine se duas matrizes são iguais : " ;
-        cout<< "\n 17.   Determine se duas matrizes são diferentes : " ;
-        cout<< "\n Sua escolha é : ";
+        cout<< "\n 14.	Calcule a potenciaï¿½ï¿½o de uma matriz e persista a matriz resultante : " ;
+        cout<< "\n 15.	Calcule e persista a matriz resultante da multiplicaï¿½ao de uma matriz por k : " ;
+        cout<< "\n 16.	Determine se duas matrizes sï¿½o iguais : " ;
+        cout<< "\n 17.   Determine se duas matrizes sï¿½o diferentes : " ;
+        cout<< "\n Sua escolha ï¿½ : ";
         cin >> escolha;
 
         switch(escolha)
@@ -123,28 +123,28 @@ int main()
             case 8:
 
                 int digito1;
-                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cout<<"\nDeseja realizar essa operaï¿½ï¿½o com a 1ï¿½ ou com a 2ï¿½ ? digite 1 ou 2 ! :";
                 cin>>digito1;
                 if(digito1==1)
                 {
                     if(p.triangsup())
                     {
-                        cout<< "\n É triangular superior !!!";
+                        cout<< "\n ï¿½ triangular superior !!!";
                     }
                     else
                     {
-                        cout<< "\n Não é triangular superior !!!";
+                        cout<< "\n Nï¿½o ï¿½ triangular superior !!!";
                     }
                 }
                 if(digito1==2)
                 {
                     if(p2.triangsup())
                     {
-                        cout<< "\n É triangular superior !!!";
+                        cout<< "\n ï¿½ triangular superior !!!";
                     }
                     else
                     {
-                        cout<< "\n Não é triangular superior !!!";
+                        cout<< "\n Nï¿½o ï¿½ triangular superior !!!";
                     }
                 }
                 break;
@@ -152,28 +152,28 @@ int main()
             case 9:
 
                 int digito;
-                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cout<<"\nDeseja realizar essa operaï¿½ï¿½o com a 1ï¿½ ou com a 2ï¿½ ? digite 1 ou 2 ! :";
                 cin>>digito;
                 if(digito==1)
                 {
                     if(p.trianginf())
                     {
-                        cout<< "\n É triangular inferior !!!";
+                        cout<< "\n ï¿½ triangular inferior !!!";
                     }
                     else
                     {
-                        cout<< "\n Não é triangular inferior !!!";
+                        cout<< "\n Nï¿½o ï¿½ triangular inferior !!!";
                     }
                 }
                 if(digito==2)
                 {
                     if(p2.trianginf())
                     {
-                        cout<< "\n É triangular inferior !!!";
+                        cout<< "\n ï¿½ triangular inferior !!!";
                     }
                     else
                     {
-                        cout<< "\n Não é triangular inferior !!!";
+                        cout<< "\n Nï¿½o ï¿½ triangular inferior !!!";
                     }
                 }
 
@@ -182,26 +182,26 @@ int main()
             case 10:
 
                 int digito4;
-                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cout<<"\nDeseja realizar essa operaï¿½ï¿½o com a 1ï¿½ ou com a 2ï¿½ ? digite 1 ou 2 ! :";
                 cin>>digito4;
                 cout<<"\n";
                 if(digito4==1)
                 {
                      if(aux.simetrica(p))
                      {
-                         cout<<"\n É simetrica";
+                         cout<<"\n ï¿½ simetrica";
                      }
                      else
-                        cout<<"\n Não é simetrica";
+                        cout<<"\n Nï¿½o ï¿½ simetrica";
                 }
                 if(digito4==2)
                 {
                    if(aux.simetrica(p2))
                     {
-                         cout<<"\n É simetrica";
+                         cout<<"\n ï¿½ simetrica";
                     }
                     else
-                        cout<<"\n Não é simetrica";
+                        cout<<"\n Nï¿½o ï¿½ simetrica";
                 }
                 cout<<"\n";
                 break;
@@ -214,28 +214,28 @@ int main()
 
 
                 int digito2;
-                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cout<<"\nDeseja realizar essa operaï¿½ï¿½o com a 1ï¿½ ou com a 2ï¿½ ? digite 1 ou 2 ! :";
                 cin>>digito2;
                 if(digito2==1)
                 {
                     if(p.identidade())
                     {
-                        cout<< "\n É Matriz identidade !!!";
+                        cout<< "\n ï¿½ Matriz identidade !!!";
                     }
                     else
                     {
-                        cout<< "\n Não é Matriz identidade !!!";
+                        cout<< "\n Nï¿½o ï¿½ Matriz identidade !!!";
                     }
                 }
                 if(digito2==2)
                 {
                     if(p2.identidade())
                     {
-                        cout<< "\n É Matriz identidade !!!";
+                        cout<< "\n ï¿½ Matriz identidade !!!";
                     }
                     else
                     {
-                        cout<< "\n Não é Matriz identidade !!!";
+                        cout<< "\n Nï¿½o ï¿½ Matriz identidade !!!";
                     }
                 }
 
@@ -244,7 +244,7 @@ int main()
             case 13:
 
                 int digito3;
-                cout<<"\nDeseja realizar essa operação com a 1º ou com a 2º ? digite 1 ou 2 ! :";
+                cout<<"\nDeseja realizar essa operaï¿½ï¿½o com a 1ï¿½ ou com a 2ï¿½ ? digite 1 ou 2 ! :";
                 cin>>digito3;
                 cout<<"\n";
                 if(digito3==1)
@@ -259,14 +259,26 @@ int main()
                 }
                 cout<<"\n";
                 break;
+                
+            case 16:
+            
+				if(p==p2)
+				{
+					cout<<"\nSÃ£o iguais \n";
+				}
+				else
+				{
+					cout<<"\nNÃ£o sÃ£o iguais \n";
+				}
+				break;
 
             default:
 
-                cout<<"\nSe não digitares o numero certo te mandarei tomar no cuca !!! \n";
+                cout<<"\nSe nï¿½o digitares o numero certo te mandarei tomar no cuca !!! \n";
 
 
         }
-        cout<<"\nDeseja realizar outra operação com os mesmos numeros? sim ou nao ? : ";
+        cout<<"\nDeseja realizar outra operaÃ§Ã£o com os mesmos numeros? sim ou nao ? : ";
         cin>>choose;
         if(choose=="sim")
         {
