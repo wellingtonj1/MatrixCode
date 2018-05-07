@@ -12,7 +12,7 @@ private:
     jmatrix(int nl,int nc);//finalizado
     bool setmatij(int i,int j,int x);//finalizado
     bool lemat();//finalizado
-    bool setlc(int x,int y);
+    bool setlc(int x,int y);//finalizado
     int getmatij(int i,int j);//finalizado
     void imprimemat();//finalizado
     bool imprimemat(int x,int y);//finalizado
@@ -24,7 +24,7 @@ private:
     bool simetrica(jmatrix x);
     bool identidade();
     void transp(jmatrix x);
-
+	bool operator == (jmatrix x);
 
     void jmatrixdest(); //finalizado
 };
