@@ -108,7 +108,7 @@ bool jmatrix::setlc(int x,int y)
 
 void jmatrix::soma(jmatrix x,jmatrix y)
 {
-    if(x.l==y.l&x.c==y.c)
+    if(x.l==y.l&&x.c==y.c)
     {
         for(int i=0;i<x.l;i++)
         {
@@ -122,13 +122,13 @@ void jmatrix::soma(jmatrix x,jmatrix y)
     }
     else
     {
-        cout<<"\nAs matrizes dijitadas não possuem o mesmo número de linhas e de colunas!";
+        cout<<"\nAs matrizes dijitadas nï¿½o possuem o mesmo nï¿½mero de linhas e de colunas!";
     }
 }
 
 void jmatrix::sub(jmatrix x,jmatrix y)
 {
-    if(x.l==y.l&x.c==y.c)
+    if(x.l==y.l&&x.c==y.c)
     {
         for(int i=0;i<x.l;i++)
         {
@@ -142,7 +142,7 @@ void jmatrix::sub(jmatrix x,jmatrix y)
     }
     else
     {
-        cout<<"\nAs matrizes dijitadas não possuem o mesmo número de linhas e de colunas!";
+        cout<<"\nAs matrizes dijitadas nï¿½o possuem o mesmo nï¿½mero de linhas e de colunas!";
     }
 }
 
@@ -169,7 +169,7 @@ void jmatrix::multip(jmatrix x,jmatrix y)
     }
     else
     {
-        cout<<"\nAs matrizes dijitadas não possuem a condição necessária para serem multiplicadas!";
+        cout<<"\nAs matrizes dijitadas nï¿½o possuem a condiï¿½ï¿½o necessï¿½ria para serem multiplicadas!";
     }
 }
 bool jmatrix::trianginf()
@@ -182,12 +182,9 @@ bool jmatrix::trianginf()
             {
                 return false;
             }
-            else
-            {
-                return true;
-            }
         }
     }
+    return true;
 }
 
 bool jmatrix::triangsup()
@@ -200,13 +197,9 @@ bool jmatrix::triangsup()
             {
                 return false;
             }
-            else
-            {
-                return true;
-            }
         }
     }
-
+	return true;
 }
 
 bool jmatrix::simetrica(jmatrix x)
@@ -257,6 +250,25 @@ void jmatrix::transp(jmatrix x)
     l=x.l;
     c=x.c;
 
+}
+
+bool jmatrix::operator ==(jmatrix x)
+{
+	if(x.l!=l||x.c!=c)
+	{
+		return false;
+	}
+	for(int i=0;i<l;i++)
+	{
+		for(int j=0;j<c;j++)
+		{
+			if(matrix[i][j]!=x.matrix[i][j])
+			{
+				return false;
+			}
+		}
+	}
+	return true;
 }
 
 void jmatrix::jmatrixdest()
