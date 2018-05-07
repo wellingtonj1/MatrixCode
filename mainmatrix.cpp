@@ -272,6 +272,18 @@ int main()
 				}
 				break;
 
+
+			case 17:
+            
+				if(p==p2)
+				{
+					cout<<"\nNão são diferentes \n";
+				}
+				else
+				{
+					cout<<"\nSão diferentes  \n";
+				}
+				break;
             default:
 
                 cout<<"\nSe n�o digitares o numero certo te mandarei tomar no cuca !!! \n";
