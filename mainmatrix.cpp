@@ -29,7 +29,7 @@ int main()
 
     while(repete=="s")
     {
-
+		system("clear");
         system("cls");
 
 
@@ -62,8 +62,9 @@ int main()
         p2.lemat();
 
         salvar:
-        system("cls");
         system("clear");
+        system("cls");
+        
 
 
         cout<< "A Matriz que voce digitou MAT A= \n";
@@ -77,19 +78,19 @@ int main()
         //cout<< "\n 2.	Pesista uma matriz em arquivo texto : " ;
         //cout<< "\n 3.	Recupere uma matriz de um arquivo texto : " ;
         //cout<< "\n 4.	Apage o arquivo texto de uma matriz : " ;
-        cout<< "\n 5.	Calcule e persista a matriz resultante da soma de duas matrizes : " ;
-        cout<< "\n 6.	Calcule e persista a matriz resultante da subtracao de duas matrizes : " ;
-        cout<< "\n 7.	Calcule e persista a matriz resultante da multiplicacao de duas matrizes : " ;
-        cout<< "\n 8.	Determine se uma matriz � triangular superior : " ;
-        cout<< "\n 9.	Determine se uma matriz � triangular inferior : " ;
-        cout<< "\n 10.	Determine se uma matriz � sim�trica : " ;
-        cout<< "\n 11.	Determine se uma matriz � anti-sim�trica : " ;
-        cout<< "\n 12.	Determine se uma matriz � identidade : " ;
-        cout<< "\n 13.	Calcule e persista a matriz transposta : " ;
+        cout<< "\n 5.	Calcule e persista a matriz resultante da soma de duas matrizes : " ; //finalizada
+        cout<< "\n 6.	Calcule e persista a matriz resultante da subtracao de duas matrizes : " ;//finalizada
+        cout<< "\n 7.	Calcule e persista a matriz resultante da multiplicacao de duas matrizes : " ;//finalizada
+        cout<< "\n 8.	Determine se uma matriz � triangular superior : " ;//finalizada
+        cout<< "\n 9.	Determine se uma matriz � triangular inferior : " ;//finalizada
+        cout<< "\n 10.	Determine se uma matriz � sim�trica : " ;//finalizada
+        cout<< "\n 11.	Determine se uma matriz � anti-sim�trica : " ;//finalizada
+        cout<< "\n 12.	Determine se uma matriz � identidade : " ;//finalizada
+        cout<< "\n 13.	Calcule e persista a matriz transposta : " ;//finalizada
         cout<< "\n 14.	Calcule a potencia��o de uma matriz e persista a matriz resultante : " ;
         cout<< "\n 15.	Calcule e persista a matriz resultante da multiplica�ao de uma matriz por k : " ;
-        cout<< "\n 16.	Determine se duas matrizes s�o iguais : " ;
-        cout<< "\n 17.   Determine se duas matrizes s�o diferentes : " ;
+        cout<< "\n 16.	Determine se duas matrizes s�o iguais : " ;//finalizada
+        cout<< "\n 17.   Determine se duas matrizes s�o diferentes : " ;//finalizada
         cout<< "\n Sua escolha � : ";
         cin >> escolha;
 
@@ -207,6 +208,34 @@ int main()
                 break;
 
             case 11:
+				
+				int digit;
+				cout<<"\nDeseja realizar essa opera��o com a 1� ou com a 2� ? digite 1 ou 2 ! :";
+				cin>>digit;
+				cout<<"\n";
+                if(digit==1)
+                {
+                     if(p.antisimetrica())
+                     {
+                         cout<<"\n É anti simetrica! ";
+                     }
+                     else
+                        cout<<"\n Não é anti simetrica! ";
+                }
+                if(digit==2)
+                {
+                   if(p2.antisimetrica())
+                    {
+                         cout<<"\n É anti simetrica! ";
+                    }
+                    else
+                    {
+                        cout<<"\n Não é anti simetrica! ";
+					}
+                }
+                cout<<"\n";
+                break;
+				
 
             break;
 
@@ -260,6 +289,27 @@ int main()
                 cout<<"\n";
                 break;
                 
+            /*case 14:
+            
+				int digito0,pot;
+                cout<<"\nDeseja realizar essa opera��o com a 1� ou com a 2� ? digite 1 ou 2 ! :";
+                cin>>digito0;
+                cout<< "\nVocê quer elevar essa matriz a qual potencia ?" ;
+                cin>>pot;
+                cout<<"\n";
+                if(digito0==1)
+                {
+                    aux.potencia(p,pot);
+                    aux.imprimemat();
+                }
+                if(digito0==2)
+                {
+                    aux.potencia(p2,pot);
+                    aux.imprimemat();
+                }
+                cout<<"\n";
+                break;
+              */ 
             case 16:
             
 				if(p==p2)

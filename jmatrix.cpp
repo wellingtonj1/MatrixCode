@@ -158,7 +158,7 @@ void jmatrix::multip(jmatrix x,jmatrix y)
                 matrix[i][k]=0;
                 for(int f=0;f<x.c;f++)
                 {
-                 aux+=x.matrix[i][f]*y.matrix[f][k];
+					aux+=x.matrix[i][f]*y.matrix[f][k];
                 }
                 matrix[i][k]=aux;
                 aux=0;
@@ -271,6 +271,65 @@ bool jmatrix::operator ==(jmatrix x)
 	return true;
 }
 
+bool jmatrix::antisimetrica()
+{
+	int i,j,k,a,b;
+	int aux1=0;
+	int aux2=0;
+	for(i=0;i<l;i++)
+	{
+		if(matrix[i][i]!=0)
+		{
+			return false;
+		}
+	}
+	for(j=0;j<l-1;j++)
+	{
+		for(k=j+1;k<c;k++)
+		{
+			aux1+=matrix[j][k];
+		}
+	}
+	for(a=1;a<l;a++)
+	{
+		for(b=0;b<a;b++)
+		{
+			aux2+=matrix[a][b];
+		}
+	}
+	if(aux1==-aux2||-aux1==aux2)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+/*void jmatrix::potencia(jmatrix x,int pot)
+{
+	if(x.l!=x.c)
+	{
+		cout<<"\nA matriz precisa ser quadrada, não foi possivel efetuar o calculo !";
+	}
+	else
+	{	
+		int conta=0;
+		l=x.l;
+		c=x.c;
+		
+		while(conta<pot)
+		{
+			multip(x,x);
+			matrix=x.matrix;	
+			conta++;
+		}	
+		
+	}
+		
+}
+*/
 void jmatrix::jmatrixdest()
 {
 
@@ -281,3 +340,4 @@ void jmatrix::jmatrixdest()
     }
     delete[]matrix;
 }
+

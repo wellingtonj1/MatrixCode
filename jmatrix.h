@@ -1,7 +1,7 @@
 //                         !!!!!!!      IN CONSTRUCTION !!!!!!!
 #ifndef JMATRIX_H
 #define JMATRIX_H
-#include <string>
+#include <iostream>
 class jmatrix
 {
 private:
@@ -25,6 +25,9 @@ private:
     bool identidade();
     void transp(jmatrix x);
 	bool operator == (jmatrix x);
+	bool antisimetrica();
+	void potencia(jmatrix x,int pot);
+
 
     void jmatrixdest(); //finalizado
 };
