@@ -16,9 +16,9 @@ private:
     int getmatij(int i,int j);//finalizado
     void imprimemat();//finalizado
     bool imprimemat(int x,int y);//finalizado
-    void soma(jmatrix j,jmatrix k);//finalizado
-    void sub(jmatrix x,jmatrix y);//finalizado
-    void multip(jmatrix x,jmatrix y);//finalizado
+    bool soma(jmatrix j,jmatrix k);//finalizado
+    bool sub(jmatrix x,jmatrix y);//finalizado
+    bool multip(jmatrix x,jmatrix y);//finalizado
     bool trianginf();//finalizado
     bool triangsup();//finalizado
     bool simetrica(jmatrix x);
@@ -26,10 +26,12 @@ private:
     void transp(jmatrix x);
 	bool operator == (jmatrix x);
 	bool antisimetrica();
-	void potencia(jmatrix x,int pot);
+	bool potencia(jmatrix x,int pot);
+	void vetcopia(jmatrix x);
+	
 	~jmatrix();
 
 
-    void jmatrixdest(); //finalizado
+ 
 };
 #endif
