@@ -106,7 +106,7 @@ bool jmatrix::setlc(int x,int y)
 
 }
 
-void jmatrix::soma(jmatrix x,jmatrix y)
+bool jmatrix::soma(jmatrix x,jmatrix y)
 {
     if(x.l==y.l&&x.c==y.c)
     {
@@ -119,18 +119,26 @@ void jmatrix::soma(jmatrix x,jmatrix y)
         }
 		l=x.l;
 		c=x.c;
+		
+		x.matrix=y.matrix=0;
+		x.ql=x.qc=y.ql=y.qc=0;
+		return true;
     }
     else
     {
         cout<<"\nAs matrizes dijitadas n�o possuem o mesmo n�mero de linhas e de colunas!";
+    
+		x.matrix=y.matrix=0;
+		x.ql=x.qc=y.ql=y.qc=0;
+		return false;
     }
-    x.matrix=0;
-    x.ql=x.qc=0;
-    y.matrix=0;
-    y.ql=y.qc=0;
+    x.matrix=y.matrix=0;
+    x.ql=x.qc=y.ql=y.qc=0;
+   
+    
 }
 
-void jmatrix::sub(jmatrix x,jmatrix y)
+bool jmatrix::sub(jmatrix x,jmatrix y)
 {
     if(x.l==y.l&&x.c==y.c)
     {
@@ -143,17 +151,26 @@ void jmatrix::sub(jmatrix x,jmatrix y)
         }
 		l=x.l;
 		c=x.c;
+		
+		x.matrix=y.matrix=0;
+		x.ql=x.qc=y.ql=y.qc=0;
+		return true;
     }
     else
     {
         cout<<"\nAs matrizes dijitadas n�o possuem o mesmo n�mero de linhas e de colunas!";
+		
+		x.matrix=y.matrix=0;
+		x.ql=x.qc=y.ql=y.qc=0;
+		return false;
+		
     }
+   
 }
 
-void jmatrix::multip(jmatrix x,jmatrix y)
+bool jmatrix::multip(jmatrix x,jmatrix y)
 {
-    int aux=0;
-    if(x.c==y.l)
+	if(x.c==y.l)
     {
         for(int i=0;i<x.l;i++)
         {
@@ -162,19 +179,27 @@ void jmatrix::multip(jmatrix x,jmatrix y)
                 matrix[i][k]=0;
                 for(int f=0;f<x.c;f++)
                 {
-					aux+=x.matrix[i][f]*y.matrix[f][k];
+					matrix[i][k]+=x.matrix[i][f]*y.matrix[f][k];
                 }
-                matrix[i][k]=aux;
-                aux=0;
+               
             }
         }
 		l=x.l;
 		c=y.c;
+		
+		x.matrix=y.matrix=0;
+		x.ql=x.qc=y.ql=y.qc=0;
+		return true;
     }
     else
     {
-        cout<<"\nAs matrizes dijitadas n�o possuem a condi��o necess�ria para serem multiplicadas!";
-    }
+		cout<<"\nAs matrizes dijitadas n�o possuem a condi��o necess�ria para serem multiplicadas!";
+		
+		x.matrix=y.matrix=0;
+		x.ql=x.qc=y.ql=y.qc=0;
+		return false;	
+	}
+    
 }
 bool jmatrix::trianginf()
 {
@@ -216,13 +241,17 @@ bool jmatrix::simetrica(jmatrix x)
         {
         }
     }
+
     if(j==c&&i==l)
     {
         return true;
     }
     else
+    {
         return false;
-
+	}
+	x.matrix=0;
+    x.ql=x.qc=0;
 }
 
 bool jmatrix::identidade()
@@ -253,7 +282,8 @@ void jmatrix::transp(jmatrix x)
     }
     l=x.l;
     c=x.c;
-
+	x.matrix=0;
+    x.ql=x.qc=0;
 }
 
 bool jmatrix::operator ==(jmatrix x)
@@ -261,6 +291,8 @@ bool jmatrix::operator ==(jmatrix x)
 	if(x.l!=l||x.c!=c)
 	{
 		return false;
+		x.matrix=0;
+		x.ql=x.qc=0;
 	}
 	for(int i=0;i<l;i++)
 	{
@@ -269,10 +301,14 @@ bool jmatrix::operator ==(jmatrix x)
 			if(matrix[i][j]!=x.matrix[i][j])
 			{
 				return false;
+				x.matrix=0;
+				x.ql=x.qc=0;
 			}
 		}
 	}
 	return true;
+	x.matrix=0;
+    x.ql=x.qc=0;
 }
 
 bool jmatrix::antisimetrica()
@@ -311,45 +347,43 @@ bool jmatrix::antisimetrica()
 	}
 }
 
-/*void jmatrix::potencia(jmatrix x,int pot)
+bool jmatrix::potencia(jmatrix x,int pot)
 {
-	if(x.l!=x.c)
+	if(x.c!=x.l)
 	{
-		cout<<"\nA matriz precisa ser quadrada, não foi possivel efetuar o calculo !";
+		cout<<"\nNão foi possivel realizar a operação .. o matriz não é quadrada!";
+		return false;
 	}
-	else
-	{	
-		int conta=0;
-		l=x.l;
-		c=x.c;
-		
-		while(conta<pot)
+	for(int i=0;i<x.c;i++)
+	{
+		for(int j=0;j<x.l;j++)
 		{
-			multip(x,x);
-			matrix=x.matrix;	
-			conta++;
-		}	
-		
+			
+		}
 	}
-		
+	
+	
+	
+	return true;
 }
-*/
-/*void jmatrix::jmatrixdest()
+
+
+void jmatrix::vetcopia(jmatrix x)
 {
-
-    cout<<"\n\ndestrutor executado";
-    for(int i=0;i<ql;i++)
-    {
-        delete[]matrix[i];
-    }
-    delete[]matrix;
-    
-}*/
-
+	for(int i=0;x.c;i++)
+	{
+		for(int k=0;k<x.l;k++)
+		{
+			matrix[i][k]=x.matrix[i][k];
+		}
+	}
+	ql=x.ql;
+	qc=x.qc;
+}
 
 jmatrix::~jmatrix()
 {
-	//cout<<"\n\ndestrutor executado";
+	
     for(int i=0;i<ql;i++)
     {
         delete[]matrix[i];
@@ -357,3 +391,4 @@ jmatrix::~jmatrix()
     delete[]matrix;
     
 }
+
