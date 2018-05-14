@@ -114,16 +114,20 @@ void jmatrix::soma(jmatrix x,jmatrix y)
         {
             for(int k=0;k<x.c;k++)
             {
-            matrix[i][k]=x.matrix[i][k]+y.matrix[i][k];
+				matrix[i][k]=x.matrix[i][k]+y.matrix[i][k];
             }
         }
-    l=x.l;
-    c=x.c;
+		l=x.l;
+		c=x.c;
     }
     else
     {
         cout<<"\nAs matrizes dijitadas n�o possuem o mesmo n�mero de linhas e de colunas!";
     }
+    x.matrix=0;
+    x.ql=x.qc=0;
+    y.matrix=0;
+    y.ql=y.qc=0;
 }
 
 void jmatrix::sub(jmatrix x,jmatrix y)
@@ -137,8 +141,8 @@ void jmatrix::sub(jmatrix x,jmatrix y)
             matrix[i][k]=x.matrix[i][k]-y.matrix[i][k];
             }
         }
-    l=x.l;
-    c=x.c;
+		l=x.l;
+		c=x.c;
     }
     else
     {
@@ -164,8 +168,8 @@ void jmatrix::multip(jmatrix x,jmatrix y)
                 aux=0;
             }
         }
-    l=x.l;
-    c=y.c;
+		l=x.l;
+		c=y.c;
     }
     else
     {
@@ -330,7 +334,7 @@ bool jmatrix::antisimetrica()
 		
 }
 */
-void jmatrix::jmatrixdest()
+/*void jmatrix::jmatrixdest()
 {
 
     cout<<"\n\ndestrutor executado";
@@ -339,5 +343,17 @@ void jmatrix::jmatrixdest()
         delete[]matrix[i];
     }
     delete[]matrix;
-}
+    
+}*/
 
+
+jmatrix::~jmatrix()
+{
+	//cout<<"\n\ndestrutor executado";
+    for(int i=0;i<ql;i++)
+    {
+        delete[]matrix[i];
+    }
+    delete[]matrix;
+    
+}
