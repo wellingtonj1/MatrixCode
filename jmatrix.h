@@ -27,6 +27,7 @@ private:
 	bool operator == (jmatrix x);
 	bool antisimetrica();
 	void potencia(jmatrix x,int pot);
+	~jmatrix();
 
 
     void jmatrixdest(); //finalizado
