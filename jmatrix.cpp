@@ -207,7 +207,7 @@ bool jmatrix::trianginf()
     {
         for(int k=1+i;k<c;k++)
         {
-            if(matrix[i][k]!=0)
+            if(matrix[i][k]!=0&&!trianginf())
             {
                 return false;
             }
@@ -222,7 +222,7 @@ bool jmatrix::triangsup()
     {
         for(int k=0; k<i;k++)
         {
-            if(matrix[i][k]!=0)
+            if(matrix[i][k]!=0&&!trianginf())
             {
                 return false;
             }
