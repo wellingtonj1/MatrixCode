@@ -306,13 +306,17 @@ int main()
 					cout<<"\n";
 					if(digito0==1)
 					{
-						aux.potencia(p,nova,pot);
-						aux.imprimemat();
+						if(aux.potencia(p,nova,pot))
+                        {
+                            aux.imprimemat();
+                        }
 					}
 					if(digito0==2)
 					{
-						aux.potencia(p2,nova,pot);
+						if(aux.potencia(p2,nova,pot))
+                        {
 						aux.imprimemat();
+                        }
 					}
 					cout<<"\n";
 					break;
@@ -360,7 +364,6 @@ int main()
         system("clear");
 
 }
-
 
 
 
