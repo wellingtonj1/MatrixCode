@@ -134,8 +134,6 @@ bool jmatrix::soma(jmatrix x,jmatrix y)
     }
     x.matrix=y.matrix=0;
     x.ql=x.qc=y.ql=y.qc=0;
-
-
 }
 
 bool jmatrix::sub(jmatrix x,jmatrix y)
@@ -181,12 +179,12 @@ bool jmatrix::multip(jmatrix x,jmatrix y)
                 {
 					matrix[i][k]+=x.matrix[i][f]*y.matrix[f][k];
                 }
-
             }
         }
 		l=x.l;
 		c=y.c;
-
+		x.matrix=y.matrix=0;
+		x.ql=x.qc=y.ql=y.qc=0;
 		return true;
     }
     else
@@ -205,9 +203,19 @@ bool jmatrix::trianginf()
     {
         for(int k=1+i;k<c;k++)
         {
-            if(matrix[i][k]!=0&&!trianginf())
+            if(matrix[i][k]!=0)
             {
                 return false;
+            }
+            for(unsigned int cont=0;cont<l;cont++)
+            {
+                for(unsigned int conta=0;conta<cont+1;conta++)
+                {
+                    if(matrix[cont][conta]==0)
+                    {
+                        return false;
+                    }
+                }
             }
         }
     }
@@ -220,9 +228,19 @@ bool jmatrix::triangsup()
     {
         for(int k=0; k<i;k++)
         {
-            if(matrix[i][k]!=0&&!trianginf())
+            if(matrix[i][k]!=0)
             {
                 return false;
+            }
+            for(int conta=0;conta<l;conta++)
+            {
+                for(int conta1=conta;conta1<c;conta1++)
+                {
+                    if(matrix[conta][conta1]==0)
+                    {
+                        return false;
+                    }
+                }
             }
         }
     }
@@ -235,9 +253,7 @@ bool jmatrix::simetrica(jmatrix x)
     int i,j;
     for(i=0;i<l;i++)
     {
-        for(j=0;j<c && matrix[i][j]==x.matrix[i][j];j++)
-        {
-        }
+        for(j=0;j<c && matrix[i][j]==x.matrix[i][j];j++);
     }
 
     if(j==c&&i==l)
@@ -311,16 +327,13 @@ bool jmatrix::operator ==(jmatrix x)
 
 bool jmatrix::antisimetrica()
 {
+    if(l!=c)
+    {
+        return false;
+    }
 	int i,j,k,a,b;
 	int aux1=0;
 	int aux2=0;
-	for(i=0;i<l;i++)
-	{
-		if(matrix[i][i]!=0)
-		{
-			return false;
-		}
-	}
 	for(j=0;j<l-1;j++)
 	{
 		for(k=j+1;k<c;k++)
@@ -345,29 +358,46 @@ bool jmatrix::antisimetrica()
 	}
 }
 
-bool jmatrix::potencia(jmatrix x,jmatrix y,unsigned int pot)
+bool jmatrix::potencia(jmatrix x,jmatrix y,int pot)
 {
+    if(pot==1)
+    {
+        vetcopia(x);
+        return true;
+    }
+
 	if(x.c!=x.l)
 	{
 		cout<<"\nNão foi possivel realizar a operação .. o matriz não é quadrada!";
 		return false;
 	}
-    l=x.l;
-    c=x.c;
-	for(int i=0;i<pot;i++)
+    else
     {
-        if(i=0)
+        l=x.l;
+        c=x.c;
+        for(int i=1;i<pot;i++)
         {
-            multiplica(x,x);
+            if(i==1)
+            {
+                multip(x,x);
+            }
+            else
+            {
+                copia2(y);
+                multip(x,y);
+            }
         }
-        vetcopia(y);
-        multiplica(x,y);
+
+        return true;
     }
-    return true;
 }
 
 void jmatrix::vetcopia(jmatrix x)
 {
+    ql=x.ql;
+	qc=x.qc;
+	l=x.l;
+	c=x.c;
 	for(int i=0;x.c;i++)
 	{
 		for(int k=0;k<x.l;k++)
@@ -375,10 +405,21 @@ void jmatrix::vetcopia(jmatrix x)
 			matrix[i][k]=x.matrix[i][k];
 		}
 	}
-	ql=x.ql;
-	qc=x.qc;
-	l=x.l;
-	c=x.c;
+}
+
+void jmatrix::copia2(jmatrix x)
+{
+    x.ql=ql;
+	x.qc=qc;
+	x.l=l;
+	x.c=c;
+    for(int i=0;x.c;i++)
+	{
+		for(int k=0;k<x.l;k++)
+		{
+			x.matrix[i][k]=matrix[i][k];
+		}
+	}
 }
 
 jmatrix::~jmatrix()
@@ -390,22 +431,4 @@ jmatrix::~jmatrix()
     }
     delete[]matrix;
 
-}
-
-void jmatrix::multiplica(jmatrix x,jmatrix y)
-{
-
-    for(int i=0;i<x.l;i++)
-    {
-        for(int k=0;k<y.c;k++)
-        {
-            matrix[i][k]=0;
-            for(int f=0;f<x.c;f++)
-            {
-                matrix[i][k]+=x.matrix[i][f]*y.matrix[f][k];
-            }
-        }
-    }
-    l=x.l;
-    c=y.c;
 }
