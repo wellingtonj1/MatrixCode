@@ -26,9 +26,9 @@ private:
     void transp(jmatrix x);
 	bool operator == (jmatrix x);
 	bool antisimetrica();
-	bool potencia(jmatrix x,jmatrix y,unsigned int pot);
+	bool potencia(jmatrix x,jmatrix y,int pot);
 	void vetcopia(jmatrix x);
-	void multiplica(jmatrix x,jmatrix y);
+    void copia2(jmatrix x);
 
 	~jmatrix();
 
