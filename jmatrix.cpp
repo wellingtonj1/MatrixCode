@@ -207,9 +207,9 @@ bool jmatrix::trianginf()
             {
                 return false;
             }
-            for(unsigned int cont=0;cont<l;cont++)
+            for(int cont=0;cont<l;cont++)
             {
-                for(unsigned int conta=0;conta<cont+1;conta++)
+                for(int conta=0;conta<cont+1;conta++)
                 {
                     if(matrix[cont][conta]==0)
                     {
@@ -287,15 +287,15 @@ bool jmatrix::identidade()
 
 void jmatrix::transp(jmatrix x)
 {
-    for(int i=0;i<x.l;i++)
+    for(int i=0;i<x.c;i++)
     {
-        for(int j=0;j<x.c;j++)
+        for(int j=0;j<x.l;j++)
         {
             matrix[i][j]=x.matrix[j][i];
         }
     }
-    l=x.l;
-    c=x.c;
+    l=x.c;
+    c=x.l;
 	x.matrix=0;
     x.ql=x.qc=0;
 }
@@ -331,7 +331,7 @@ bool jmatrix::antisimetrica()
     {
         return false;
     }
-	int i,j,k,a,b;
+	int j,k,a,b;
 	int aux1=0;
 	int aux2=0;
 	for(j=0;j<l-1;j++)
